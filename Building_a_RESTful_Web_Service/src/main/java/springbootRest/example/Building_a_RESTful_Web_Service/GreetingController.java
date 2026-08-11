@@ -22,7 +22,7 @@ A
 @RestController
 public class GreetingController {
 
-private static final String template = "Hello , %s!";
+private static final String template = "Hello Sexy , %s!";
 
 
 int num = 0;
