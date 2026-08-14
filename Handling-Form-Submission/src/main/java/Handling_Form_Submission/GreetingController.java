@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
-
-
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
 
 
 // so the way that this works  is that that the data flows from the object Greeting to the model/container and than to the view for the GET REQUEST
@@ -19,12 +19,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class GreetingController {
 
 
+    LinkedHashMap<String, Object> capitalCities = new LinkedHashMap<>();
+
+
 
     @GetMapping("/greeting")
-    public String greeting(Model modelContainer) {
+    public String greeting(Model modelContainer  ) {
 
 // model attribute binds requests parameters to the the object
-        modelContainer.addAttribute("greeting", new Greeting());
+      modelContainer.addAttribute("greeting", new Greeting());
+
+
+        // or you could write this as
+        // Map<String, Object> modelContainer = new LinkedHashMap<>();
+
+
+       // modelContainer.put("greeting", new Greeting());
+       // modelContainer.put("greeting", new Greeting());
+
+
         return "greeting";
 
     }
