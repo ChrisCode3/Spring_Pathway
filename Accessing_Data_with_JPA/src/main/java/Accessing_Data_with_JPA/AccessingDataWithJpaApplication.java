@@ -21,6 +21,7 @@ public class AccessingDataWithJpaApplication {
 
 	@Bean
 	public CommandLineRunner demo(CustomerRepository repository) {
+		// here is where  Spring Boot creates/ instantiates the Repository and thats why its labelled with @Bean
 
 		return (args) -> {
 			// save a few customers
@@ -31,16 +32,44 @@ public class AccessingDataWithJpaApplication {
 			// fetch all customers
 			logger.info("Customers found with findAll():");
 			logger.info("-------------------------------");
-			repository.findAll().forEach(customer -> {
-				logger.info(customer.toString());
-			});
-			logger.info("");
+
+
+
+
+		   repository.findByLastName("Bauer").forEach(test -> logger.info(test.toString()));
+
+			repository.findAll().forEach(foundCustomer -> logger.info(foundCustomer.toString()));
+
+
+
+			repository.findByFirstName("Jack").toString();
+
+
+
+			Customer Customer2 = repository.findById(1l);
+
+
+			Customer2.setFirstName(" Smith");
+
+
+
+
+
+
+
+
+
+
+
 
 
 		};
 
 
-	}
+	};
+
+
 }
+
 
 

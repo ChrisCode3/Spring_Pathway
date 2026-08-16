@@ -61,6 +61,11 @@ public class Customer {
 
         return age;
     }
+
+    public void setFirstName( String firstName) {
+
+         this.firstName = firstName;
+    }
 }
 
 
