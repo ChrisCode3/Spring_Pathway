@@ -51,9 +51,13 @@ public class AccessingRelationalDataApplication implements CommandLineRunner {
 				.collect(Collectors.toList());
 
 
+// this prints the name of the data in the list
+		splitNames.forEach(name -> System.out.println(name[0]  + " " +  name[1]));
 
-		splitNames.forEach(name -> System.out.println(name[0]  + " " +  name[1]) );
 
+		// this is where we add the information into the sql database.
+		// using ? as a placeholder for a single value.
+		jdbcTemplate.batchUpdate( " INSERT INTO customers (first_name, last_name  VALUES (?,?)", splitNames);
 
 // this would be how you would do it in a proper application assumign that your getting the data from submit or from a repository
 /*
