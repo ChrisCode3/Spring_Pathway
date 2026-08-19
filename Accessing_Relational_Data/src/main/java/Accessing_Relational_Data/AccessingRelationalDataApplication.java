@@ -42,7 +42,7 @@ public class AccessingRelationalDataApplication implements CommandLineRunner {
 		// the execute method is for writien queries for the database to execute
 		jdbcTemplate.execute(("DROP TABLE IF EXISTS customers"));
 
-		jdbcTemplate.execute("CREATE TABLE  customer (" + " id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255))");
+		jdbcTemplate.execute("CREATE TABLE  customers (" + " id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255))");
 
 
 // Split up  the array of whole names into an array of first names and second names
@@ -57,7 +57,9 @@ public class AccessingRelationalDataApplication implements CommandLineRunner {
 
 		// this is where we add the information into the sql database.
 		// using ? as a placeholder for a single value.
-		jdbcTemplate.batchUpdate( " INSERT INTO customers (first_name, last_name  VALUES (?,?)", splitNames);
+		jdbcTemplate.batchUpdate("INSERT INTO customers(first_name, last_name) VALUES (?,?)", splitNames);
+
+		//jdbcTemplate.batchUpdate("INSERT INTO customers(first_name, last_name) VALUES (?,?)", splitNames);
 
 // this would be how you would do it in a proper application assumign that your getting the data from submit or from a repository
 /*
@@ -71,6 +73,18 @@ public class AccessingRelationalDataApplication implements CommandLineRunner {
 */
 
 
+
+
+		// so the fimnal section is when we create a java object from a an entry in the sql
+
+		jdbcTemplate.query( "SELECT id, first_name, last_name FROM customers WHERE first_name = ?",
+				(rs, rowNum) -> new Customer((rs.getLong("id")), rs.getNString("first_name"),
+						rs.getString("last_name")), "Josh")
+				.forEach(customer -> System.out.println(customer.toString()));
+
+
+
 	}
 
 }
+
