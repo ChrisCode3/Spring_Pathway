@@ -4,7 +4,7 @@ package Accessing_Relational_Data;
 
 
 
-public record Customer(long id, String firstName, String lastName) {
+public record Customer(long id, String firstName, String lastName, int age) {
 
 
 
@@ -16,7 +16,7 @@ public record Customer(long id, String firstName, String lastName) {
 
         // this format of '%s' is similar to to + . the  %d , %s represents int, and String respectively .
         return String.format(
-                "Customer[id=%d, firstName'%s',   lastName'%s',]", id, firstName, lastName);
+                "Customer[id=%d, firstName'%s',   lastName'%s', age'%d']", id, firstName, lastName , age);
 
 
 
