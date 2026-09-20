@@ -20,7 +20,7 @@ public class AccessingDataWithJpaApplication {
 
 
 	@Bean
-	public CommandLineRunner demo(CustomerRepository repository) {
+	public CommandLineRunner demo(JpaRepository2 repository) {
 		// here is where  Spring Boot creates/ instantiates the Repository and thats why its labelled with @Bean
 
 		return (args) -> {

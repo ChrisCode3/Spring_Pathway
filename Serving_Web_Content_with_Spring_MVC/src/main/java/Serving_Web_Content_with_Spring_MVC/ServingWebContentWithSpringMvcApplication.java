@@ -10,4 +10,7 @@ public class ServingWebContentWithSpringMvcApplication {
 		SpringApplication.run(ServingWebContentWithSpringMvcApplication.class, args);
 	}
 
+
+
+
 }

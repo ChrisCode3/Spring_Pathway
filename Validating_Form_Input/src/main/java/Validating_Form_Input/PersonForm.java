@@ -2,6 +2,8 @@ package Validating_Form_Input;
 
 
 
+
+// the only relevant information that we need to keep from this guide is the annnotation that are around validation . such as @Valid , Min ,  Max  , Size
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

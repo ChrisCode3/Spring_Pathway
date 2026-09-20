@@ -22,33 +22,31 @@ A
 @RestController
 public class GreetingController {
 
-private static final String template = "Hello Sexy , %s!";
 
+
+//private static final String template = "Hello Sexy , %s!";
 
 int num = 0;
 
-
 public static int count (int x){
-
-
-
     return x + x;
 }
-
-
-
   private final AtomicLong counter = new AtomicLong();
 
 
-
-
+// this is the GET Request
 @GetMapping("/greeting")
-public Greeting greeting(@RequestParam(defaultValue = "World") String name) {
+public Greeting greeting(@RequestParam(name= "name",  defaultValue = "World") String name) {
 
 
-        return new Greeting(counter.incrementAndGet(),
-                template.formatted(name));
+        return new Greeting(counter.incrementAndGet(), (name));
 
+    }
+
+
+    @GetMapping("/greet")
+    public String sayHello(@RequestParam(name = "name", defaultValue = "Guest") String userName) {
+        return "Hello, " + userName + "!";
     }
 
 

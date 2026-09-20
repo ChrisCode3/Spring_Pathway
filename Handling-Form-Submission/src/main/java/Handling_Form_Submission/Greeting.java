@@ -1,10 +1,8 @@
 package Handling_Form_Submission;
 
 
-
-
-
-
+import org.springframework.stereotype.Controller;
+@Controller
 public class Greeting {
 
     private long id;
@@ -29,3 +27,6 @@ public class Greeting {
         Content = content;
     }
 }
+
+
+//  hello darkenss
